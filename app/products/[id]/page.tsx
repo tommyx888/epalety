@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Button } from '@/components/ui/Button'
 
 export default function ProductDetailPage() {
   const params = useParams()

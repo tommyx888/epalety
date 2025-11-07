@@ -18,7 +18,14 @@ interface BranchMapProps {
 
 declare global {
   interface Window {
-    google: typeof google
+    google: {
+      maps: {
+        Map: new (element: HTMLElement, options?: any) => any
+        Marker: new (options?: any) => any
+        InfoWindow: new (options?: any) => any
+        LatLngBounds: new () => any
+      }
+    }
   }
 }
 

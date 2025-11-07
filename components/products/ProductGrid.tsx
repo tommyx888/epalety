@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ProductCard } from './ProductCard'
 
-interface Product {
+export interface Product {
   id: string
   name: string
   description: string

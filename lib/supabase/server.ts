@@ -1,12 +1,18 @@
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 
-export function createClient() {
-  return createClientComponentClient()
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+
+export function createClientComponent() {
+  return createClient(supabaseUrl, supabaseAnonKey)
 }
 
 export async function createServerClient() {
-  const cookieStore = await cookies()
-  return createClientComponentClient({ cookies: () => cookieStore })
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  })
 }
 

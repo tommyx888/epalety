@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { ServicesSection } from '@/components/sections/ServicesSection'
 import { ProductsSection } from '@/components/sections/ProductsSection'

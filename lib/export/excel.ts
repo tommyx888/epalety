@@ -44,6 +44,6 @@ export async function exportOrdersToExcel(orders: Order[]): Promise<Buffer> {
   worksheet.getColumn('total').numFmt = '#,##0.00 €'
   
   const buffer = await workbook.xlsx.writeBuffer()
-  return buffer as Buffer
+  return Buffer.from(buffer as ArrayBuffer)
 }
 
