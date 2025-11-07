@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest-green: #2D5016;
+  --wood-brown: #8B4513;
+  --vibrant-orange: #FF8C00;
+  --white: #FFFFFF;
+  --gray-50: #F9F9F9;
+  --gray-200: #E5E5E5;
+  --gray-500: #666666;
+  --gray-900: #111111;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  h1 {
+    @apply text-[32px] leading-[40px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px] font-bold;
+  }
+  
+  h2 {
+    @apply text-[28px] leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[36px] lg:leading-[44px] font-semibold;
+  }
+  
+  h3 {
+    @apply text-[24px] leading-[32px] md:text-[28px] md:leading-[36px] lg:text-[30px] lg:leading-[38px] font-semibold;
+  }
+  
+  h4 {
+    @apply text-[24px] leading-[32px] font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-orange text-white font-semibold px-6 py-3 rounded-lg;
+    @apply hover:bg-orange-dark transform hover:-translate-y-0.5 hover:scale-105;
+    @apply transition-all duration-smooth ease-out;
+    @apply shadow-soft hover:shadow-card;
+    @apply active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-forest text-forest font-semibold px-6 py-3 rounded-lg;
+    @apply hover:bg-forest hover:text-white hover:scale-105;
+    @apply transition-all duration-smooth ease-out;
+    @apply active:scale-95;
+  }
+  
+  .btn-tertiary {
+    @apply text-forest font-medium;
+    @apply hover:text-orange hover:underline;
+    @apply transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-card p-6 shadow-soft;
+    @apply hover:shadow-card-hover hover:-translate-y-2;
+    @apply transition-all duration-smooth ease-out;
+    @apply border border-gray-100;
+  }
+  
+  .card-glass {
+    @apply bg-white/80 backdrop-blur-md rounded-card p-6 shadow-soft;
+    @apply hover:bg-white/90 hover:shadow-card-hover hover:-translate-y-2;
+    @apply transition-all duration-smooth ease-out;
+    @apply border border-white/20;
+  }
+  
+  .card-modern {
+    @apply bg-gradient-to-br from-white to-gray-50 rounded-card p-6 shadow-soft;
+    @apply hover:shadow-card-hover hover:-translate-y-2 hover:scale-[1.02];
+    @apply transition-all duration-smooth ease-out;
+    @apply border border-gray-100;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-4 border-2 border-gray-200 rounded-lg;
+    @apply focus:border-forest focus:outline-none focus:ring-2 focus:ring-forest/20;
+    @apply hover:border-gray-300;
+    @apply transition-all duration-200;
+  }
+  
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-forest-dark/95 via-forest/90 to-forest-light/85;
+    @apply backdrop-blur-sm;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-forest via-forest-light to-orange;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .container-custom {
+    @apply max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16;
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-smooth ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes patternMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 60px 60px;
+  }
+}
+
