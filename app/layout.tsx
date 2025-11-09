@@ -8,6 +8,11 @@ import { CartListener } from '@/components/CartListener'
 export const metadata: Metadata = {
   title: 'EPALETY.SK - Kvalitné palety pre váš biznis',
   description: '15+ rokov skúseností | Najlepšie ceny | EUR palety, KTP boxy, Gitterbox',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
