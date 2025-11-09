@@ -7,154 +7,121 @@ export function Footer() {
   const footerLinks = {
     produkty: [
       { label: 'EUR Palety', href: '/products/eur-palety' },
-      { label: 'Jednorázové palety', href: '/products' },
-      { label: 'Paletové nádstavce', href: '/products/nadstavce' },
       { label: 'KTP Boxy', href: '/products/ktp-boxy' },
       { label: 'Gitterbox', href: '/products/gitterbox' },
+      { label: 'Nádstavce', href: '/products/nadstavce' },
     ],
     služby: [
       { label: 'Predaj', href: '/services' },
       { label: 'Výkup', href: '/services' },
       { label: 'Prenájom', href: '/services' },
-      { label: 'Opravy', href: '/services' },
-    ],
-    spoločnosť: [
-      { label: 'O nás', href: '/about' },
-      { label: 'Pobočky', href: '/contact#pobocky' },
-      { label: 'Kontakt', href: '/contact' },
+      { label: 'Servis', href: '/services' },
     ],
   }
 
-  const pobocky = [
-    {
-      name: 'Malacky 1',
-      address: 'Poľná ulica 3589 (smer na Veľké Leváre)',
-    },
-    {
-      name: 'Malacky 2',
-      address: 'Pezinská ulica 5547/1 (pri Shell pumpe)',
-    },
-    {
-      name: 'Kúty',
-      address: 'Bratislavská cesta 1352',
-    },
-  ]
-
   return (
-    <footer className="bg-forest text-white mt-20">
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <footer className="bg-neutral-text text-gray-300">
+      {/* Main Footer */}
+      <div className="container-custom py-16">
+        <div className="grid md:grid-cols-4 gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
+          <div>
+            <Link href="/" className="inline-block mb-6">
               <Image
                 src="/logo.jpg"
                 alt="EPALETY.SK Logo"
                 width={150}
                 height={50}
-                className="h-12 w-auto"
+                className="h-10 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="text-gray-200 mb-4 text-sm">
-              Dlhoročné skúsenosti s obalovým materiálom. Zaručujeme bezkonkurenčné ceny pri výkupe a predaji obalového materiálu.
+            <p className="text-gray-400 mb-6">
+              Váš spoľahlivý partner pre palety a obalový materiál.
             </p>
-            <div className="mb-4">
-              <p className="text-gray-200 text-sm mb-2">
-                <strong>Kontakt:</strong>
-              </p>
-              <p className="text-gray-200 text-sm">
-                <a href="tel:+421905896685" className="hover:text-orange transition-colors">
-                  +421 905 896 685
+            
+            {/* Social Icons */}
+            <div className="flex gap-4">
+              {[
+                { name: 'Facebook', icon: '📘' },
+                { name: 'Instagram', icon: '📷' },
+                { name: 'LinkedIn', icon: '💼' },
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href="#"
+                  className="p-2 bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
+                  aria-label={social.name}
+                >
+                  <span className="text-xl">{social.icon}</span>
                 </a>
-                {' | '}
-                <a href="tel:+421910444024" className="hover:text-orange transition-colors">
-                  +421 910 444 024
-                </a>
-              </p>
-              <p className="text-gray-200 text-sm">
-                <a href="mailto:info@epalety.sk" className="hover:text-orange transition-colors">
+              ))}
+            </div>
+          </div>
+          
+          {/* Links Columns */}
+          <div>
+            <h4 className="font-bold text-white mb-4">Produkty</h4>
+            <ul className="space-y-2">
+              {footerLinks.produkty.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-accent-400 transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-bold text-white mb-4">Služby</h4>
+            <ul className="space-y-2">
+              {footerLinks.služby.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-accent-400 transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-bold text-white mb-4">Kontakt</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-2">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <div>
+                  <a href="tel:+421905896685" className="hover:text-accent-400">
+                    +421 905 896 685
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-2">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:info@epalety.sk" className="hover:text-accent-400">
                   info@epalety.sk
                 </a>
-              </p>
-            </div>
-            <div>
-              <p className="text-gray-200 text-sm mb-2">
-                <strong>Otváracie hodiny:</strong>
-              </p>
-              <p className="text-gray-200 text-sm">Pon - Pia: 08.00 - 16.00</p>
-            </div>
-          </div>
-
-          {/* Produkty */}
-          <div>
-            <h4 className="font-heading font-semibold mb-4">Produkty</h4>
-            <ul className="space-y-2">
-              {footerLinks.produkty.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-200 hover:text-orange transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Služby */}
-          <div>
-            <h4 className="font-heading font-semibold mb-4">Služby</h4>
-            <ul className="space-y-2">
-              {footerLinks.služby.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-200 hover:text-orange transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Pobočky */}
-          <div>
-            <h4 className="font-heading font-semibold mb-4">Pobočky</h4>
-            <ul className="space-y-3">
-              {pobocky.map((pobocka) => (
-                <li key={pobocka.name}>
-                  <p className="text-gray-200 font-medium text-sm">{pobocka.name}</p>
-                  <p className="text-gray-300 text-xs">{pobocka.address}</p>
-                </li>
-              ))}
+              </li>
             </ul>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-forest-light mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-200 text-sm">
-            © {currentYear} EPALETY.SK. Všetky práva vyhradené.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/privacy"
-              className="text-gray-200 hover:text-orange text-sm transition-colors"
-            >
-              Ochrana súkromia
-            </Link>
-            <Link
-              href="/terms"
-              className="text-gray-200 hover:text-orange text-sm transition-colors"
-            >
-              Podmienky
-            </Link>
+      </div>
+      
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-800">
+        <div className="container-custom py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+          <p>© {currentYear} EPALETY.SK - Všetky práva vyhradené</p>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link href="/privacy" className="hover:text-accent-400">Obchodné podmienky</Link>
+            <Link href="/terms" className="hover:text-accent-400">Ochrana údajov</Link>
+            <Link href="/cookies" className="hover:text-accent-400">Cookies</Link>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

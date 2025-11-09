@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export function ProductsSection() {
   const products = [
@@ -117,91 +118,108 @@ export function ProductsSection() {
     },
   ]
 
+  const [activeFilter, setActiveFilter] = useState('Všetko')
+  const [quickViewProduct, setQuickViewProduct] = useState<string | null>(null)
+
+  const filters = ['Všetko', 'EUR Palety', 'KTP Boxy', 'Ostatné']
+
+  const filteredProducts = activeFilter === 'Všetko' 
+    ? products 
+    : products.filter(p => {
+        if (activeFilter === 'EUR Palety') return p.id.includes('eur')
+        if (activeFilter === 'KTP Boxy') return p.id.includes('ktp')
+        return !p.id.includes('eur') && !p.id.includes('ktp')
+      })
+
   return (
-    <section className="py-xl md:py-2xl lg:py-3xl bg-white">
+    <section className="py-24 bg-white">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <span className="text-orange font-bold text-sm uppercase tracking-wider">Produkty</span>
+        {/* Header s filtermi */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div>
+            <h2 className="text-4xl font-bold mb-2">Naše produkty</h2>
+            <p className="text-neutral-text-secondary">Široký sortiment pre každú potrebu</p>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-forest mb-6">
-            <span className="bg-gradient-to-r from-forest via-forest-light to-orange bg-clip-text text-transparent">
-              Naše produkty
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Široký sortiment kvalitných paliet pre každú potrebu
-          </p>
+          
+          {/* Filter tabs */}
+          <div className="flex gap-2 bg-gray-100 p-1 rounded-xl mt-4 md:mt-0">
+            {filters.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveFilter(tab)}
+                className={`px-4 py-2 rounded-lg font-medium hover:bg-white transition-colors ${
+                  activeFilter === tab ? 'bg-white shadow-md' : ''
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.map((product, index) => (
             <div 
               key={product.id} 
               className="card-modern group animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Product Image with Modern Effects */}
-              <div className="relative h-56 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 rounded-xl mb-6 overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-forest/10 via-orange/5 to-wood/10 group-hover:from-forest/20 group-hover:via-orange/15 group-hover:to-wood/15 transition-all duration-500"></div>
+              <div className="relative h-64 bg-gray-100 overflow-hidden rounded-xl mb-6 group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  className="object-contain p-6 group-hover:scale-125 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                {product.popular && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-orange via-orange-dark to-orange text-white px-4 py-2 rounded-full text-xs font-bold shadow-2xl shadow-orange/50 animate-pulse z-10 border-2 border-white/30">
-                    <span className="relative z-10 flex items-center gap-2">
-                      <svg className="w-4 h-4 animate-bounce" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      POPULÁRNE
+                
+                {/* Badges overlay */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  {product.popular && (
+                    <span className="px-3 py-1 bg-accent-500 text-white text-sm font-bold rounded-full">NOVÉ</span>
+                  )}
+                  {product.stock && product.stock > 0 && (
+                    <span className="px-3 py-1 bg-white text-accent-600 text-sm font-bold rounded-full shadow-md">
+                      ✓ Skladom
                     </span>
-                  </div>
-                )}
-                {/* Hover overlay with shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 animate-shimmer"></div>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-heading font-bold text-forest mb-3 group-hover:text-orange transition-colors duration-300">
-                {product.name}
-              </h3>
-              <p className="text-gray-600 mb-5 text-base line-clamp-2 leading-relaxed">{product.description}</p>
-
-              <div className="mb-5">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-extrabold bg-gradient-to-r from-orange via-orange-dark to-orange bg-clip-text text-transparent animate-gradient">
-                    {product.price}
-                  </span>
-                  {product.priceRange && (
-                    <span className="text-sm text-gray-500">({product.priceRange})</span>
                   )}
                 </div>
-                {product.stock && (
-                  <div className="mt-2 flex items-center gap-2 text-sm">
-                    <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-green-600 font-semibold">Skladom: {product.stock}+ ks</span>
-                  </div>
-                )}
+                
+                {/* Quick view button - zobrazí sa pri hoveri */}
+                <button
+                  onClick={() => setQuickViewProduct(product.id)}
+                  className="absolute inset-x-4 bottom-4 py-3 bg-white text-neutral-text font-semibold rounded-xl opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+                >
+                  Rýchly náhľad
+                </button>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {product.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-base text-gray-700 group-hover:text-gray-900 transition-colors font-medium">
-                    <span className="text-orange mr-3 font-bold text-xl group-hover:scale-125 transition-transform duration-300">✓</span>
+              <h3 className="text-xl font-bold mb-2">{product.name}</h3>
+              <p className="text-neutral-text-secondary text-sm mb-4 line-clamp-2">{product.description}</p>
+              
+              {/* Features list */}
+              <ul className="space-y-2 mb-6">
+                {product.features.slice(0, 3).map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-sm text-neutral-text">
+                    <svg className="w-4 h-4 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
                     {feature}
                   </li>
                 ))}
               </ul>
+              
+              {/* Price & CTA */}
+              <div className="flex items-center justify-between pt-4 border-t">
+                <div>
+                  <p className="text-sm text-neutral-text-secondary">Cena od</p>
+                  <p className="text-2xl font-bold text-primary-600">
+                    {product.price}
+                    <span className="text-sm text-neutral-text-secondary">/ks</span>
+                  </p>
+                </div>
 
-              <div className="flex gap-3">
                 <button
                   onClick={() => {
                     if (typeof window !== 'undefined') {
@@ -211,27 +229,10 @@ export function ProductsSection() {
                       window.dispatchEvent(event)
                     }
                   }}
-                  className="btn-primary flex-1 text-center group/btn relative overflow-hidden py-4 text-base font-bold shadow-xl hover:shadow-2xl"
+                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl"
                 >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    <span>Pridať do košíka</span>
-                  </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-orange-dark via-orange to-orange-light transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></span>
+                  Objednať
                 </button>
-                <Link
-                  href={`/products/${product.id}`}
-                  className="btn-secondary flex-1 text-center group/btn relative overflow-hidden py-4 text-base font-bold"
-                >
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    <span>Detaily</span>
-                    <svg className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </Link>
               </div>
             </div>
           ))}
