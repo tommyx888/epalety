@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -6,92 +8,112 @@ export function ProductsSection() {
     {
       id: 'eur-palety',
       name: 'EUR Palety',
-      description: 'Euro palety v rôznych stavoch - nové, použité, tmavé',
-      price: 'Individuálne ceny',
+      description: 'Euro palety v rôznych stavoch - nové, použité, tmavé. Rozmery: 1200×800×144 mm, nosnosť: 1500 kg',
+      price: 'Od 8€',
+      priceRange: '8€ - 12€',
       image: '/images/scraped/eur.png',
       popular: true,
-      features: ['Nové, použité, tmavé', 'Kvalitné drevo', 'Dostupné skladom'],
+      stock: 1000,
+      features: ['Nové, použité, tmavé', 'Kvalitné drevo', 'Certifikované', 'Rozmery: 1200×800×144 mm'],
     },
     {
       id: 'eur-palety-nove',
       name: 'EUR Palety - Nové',
-      description: 'Nové euro palety v najlepšom stave',
-      price: 'Individuálne ceny',
+      description: 'Nové euro palety v najlepšom stave. Rozmery: 1200×800×144 mm, nosnosť: 1500 kg, hmotnosť: 25 kg',
+      price: 'Od 10€',
+      priceRange: '10€ - 12€',
       image: '/images/scraped/biela-pouzita.png',
       popular: false,
-      features: ['Nové palety', 'Najvyššia kvalita', 'Certifikované'],
+      stock: 500,
+      features: ['Nové palety', 'Najvyššia kvalita', 'Certifikované', 'Rozmery: 1200×800×144 mm'],
     },
     {
       id: 'eur-palety-tmave',
       name: 'EUR Palety - Tmavé',
-      description: 'Tmavé euro palety, použité',
-      price: 'Individuálne ceny',
+      description: 'Tmavé euro palety, použité. Rozmery: 1200×800×144 mm, nosnosť: 1200 kg, hmotnosť: 22 kg',
+      price: 'Od 5€',
+      priceRange: '5€ - 8€',
       image: '/images/scraped/tmava.png',
       popular: false,
-      features: ['Použité palety', 'Dobrý stav', 'Výhodná cena'],
+      stock: 800,
+      features: ['Použité palety', 'Dobrý stav', 'Výhodná cena', 'Rozmery: 1200×800×144 mm'],
     },
     {
       id: 'jednorazova-120x80',
       name: 'Jednorázová paleta 120x80',
-      description: 'Jednorázová paleta 120cm x 80 cm',
-      price: 'Individuálne ceny',
+      description: 'Jednorázová paleta 120cm × 80cm. Nosnosť: 1000 kg, hmotnosť: 15 kg',
+      price: 'Od 3€',
+      priceRange: '3€ - 5€',
       image: '/images/scraped/120x80.png',
       popular: false,
-      features: ['Štandardná veľkosť', 'Jednorázové použitie', 'Ekonomické'],
+      stock: 2000,
+      features: ['Štandardná veľkosť', 'Jednorázové použitie', 'Ekonomické', 'Rozmery: 1200×800 mm'],
     },
     {
       id: 'jednorazova-120x100',
       name: 'Jednorázová paleta 120x100',
-      description: 'Jednorázová paleta 120 cm x 100 cm',
-      price: 'Individuálne ceny',
+      description: 'Jednorázová paleta 120 cm × 100 cm. Nosnosť: 1200 kg, hmotnosť: 18 kg',
+      price: 'Od 4€',
+      priceRange: '4€ - 6€',
       image: '/images/scraped/120x100.png',
       popular: false,
-      features: ['Väčšia veľkosť', 'Jednorázové použitie', 'Dostupné'],
+      stock: 1500,
+      features: ['Väčšia veľkosť', 'Jednorázové použitie', 'Dostupné', 'Rozmery: 1200×1000 mm'],
     },
     {
       id: 'nadstavce',
       name: 'Paletové nádstavce',
-      description: 'Nádstavce pre palety pre zvýšenie kapacity',
-      price: 'Individuálne ceny',
+      description: 'Nádstavce pre palety pre zvýšenie kapacity. Rôzne veľkosti, nosnosť: 800 kg',
+      price: 'Od 15€',
+      priceRange: '15€ - 25€',
       image: '/images/scraped/nadstavec.png',
       popular: false,
-      features: ['Zvýšenie kapacity', 'Kvalitné', 'Rôzne veľkosti'],
+      stock: 300,
+      features: ['Zvýšenie kapacity', 'Kvalitné', 'Rôzne veľkosti', 'Nosnosť: 800 kg'],
     },
     {
       id: 'ktp-boxy-888',
       name: 'KTP Boxy 888',
-      description: 'Kvalitné KTP boxy 888 pre vaše potreby',
-      price: 'Individuálne ceny',
+      description: 'Kvalitné KTP boxy 888. Rozmery: 800×600×640 mm, nosnosť: 1000 kg, hmotnosť: 12 kg',
+      price: 'Od 20€',
+      priceRange: '20€ - 30€',
       image: '/images/scraped/888.jpg',
       popular: false,
-      features: ['Odolný materiál', 'Štandardná veľkosť', 'Dlhá životnosť'],
+      stock: 400,
+      features: ['Odolný materiál', 'Štandardná veľkosť', 'Dlhá životnosť', 'Rozmery: 800×600×640 mm'],
     },
     {
       id: 'ktp-boxy-777',
       name: 'KTP Boxy 777',
-      description: 'Kvalitné KTP boxy 777 pre vaše potreby',
-      price: 'Individuálne ceny',
+      description: 'Kvalitné KTP boxy 777. Rôzne veľkosti, nosnosť: 800 kg',
+      price: 'Od 18€',
+      priceRange: '18€ - 28€',
       image: '/images/scraped/KTP-777.jpg',
       popular: false,
-      features: ['Odolný materiál', 'Rôzne veľkosti', 'Dlhá životnosť'],
+      stock: 350,
+      features: ['Odolný materiál', 'Rôzne veľkosti', 'Dlhá životnosť', 'Nosnosť: 800 kg'],
     },
     {
       id: 'ktp-boxy-999',
       name: 'KTP Boxy 999',
-      description: 'Kvalitné KTP boxy 999 pre vaše potreby',
-      price: 'Individuálne ceny',
+      description: 'Kvalitné KTP boxy 999. Väčšia veľkosť, nosnosť: 1200 kg',
+      price: 'Od 25€',
+      priceRange: '25€ - 35€',
       image: '/images/scraped/999.jpg',
       popular: false,
-      features: ['Odolný materiál', 'Väčšia veľkosť', 'Dlhá životnosť'],
+      stock: 250,
+      features: ['Odolný materiál', 'Väčšia veľkosť', 'Dlhá životnosť', 'Nosnosť: 1200 kg'],
     },
     {
       id: 'gitterbox',
       name: 'Gitterbox',
-      description: 'Profesionálne Gitterbox palety',
-      price: 'Individuálne ceny',
+      description: 'Profesionálne Gitterbox palety. Kovová konštrukcia, nosnosť: 1500 kg, hmotnosť: 35 kg',
+      price: 'Od 30€',
+      priceRange: '30€ - 45€',
       image: '/images/scraped/Gitterbox.jpg',
       popular: false,
-      features: ['Kovová konštrukcia', 'Dlhá životnosť', 'Ideálne pre sklad'],
+      stock: 200,
+      features: ['Kovová konštrukcia', 'Dlhá životnosť', 'Ideálne pre sklad', 'Nosnosť: 1500 kg'],
     },
   ]
 
@@ -152,9 +174,22 @@ export function ProductsSection() {
               <p className="text-gray-600 mb-5 text-base line-clamp-2 leading-relaxed">{product.description}</p>
 
               <div className="mb-5">
-                <span className="text-3xl font-extrabold bg-gradient-to-r from-orange via-orange-dark to-orange bg-clip-text text-transparent animate-gradient">
-                  {product.price}
-                </span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-extrabold bg-gradient-to-r from-orange via-orange-dark to-orange bg-clip-text text-transparent animate-gradient">
+                    {product.price}
+                  </span>
+                  {product.priceRange && (
+                    <span className="text-sm text-gray-500">({product.priceRange})</span>
+                  )}
+                </div>
+                {product.stock && (
+                  <div className="mt-2 flex items-center gap-2 text-sm">
+                    <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-green-600 font-semibold">Skladom: {product.stock}+ ks</span>
+                  </div>
+                )}
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -166,18 +201,38 @@ export function ProductsSection() {
                 ))}
               </ul>
 
-              <Link
-                href={`/products/${product.id}`}
-                className="btn-primary w-full text-center block group/btn relative overflow-hidden py-4 text-base font-bold shadow-xl hover:shadow-2xl"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  <span>Zistiť viac</span>
-                  <svg className="w-5 h-5 transform group-hover/btn:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-orange-dark via-orange to-orange-light transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></span>
-              </Link>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      const event = new CustomEvent('addToCart', {
+                        detail: { productId: product.id, quantity: 1 },
+                      })
+                      window.dispatchEvent(event)
+                    }
+                  }}
+                  className="btn-primary flex-1 text-center group/btn relative overflow-hidden py-4 text-base font-bold shadow-xl hover:shadow-2xl"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span>Pridať do košíka</span>
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-orange-dark via-orange to-orange-light transform scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-500 origin-left"></span>
+                </button>
+                <Link
+                  href={`/products/${product.id}`}
+                  className="btn-secondary flex-1 text-center group/btn relative overflow-hidden py-4 text-base font-bold"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <span>Detaily</span>
+                    <svg className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
             </div>
           ))}
         </div>

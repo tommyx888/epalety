@@ -37,19 +37,39 @@ export function HeroSection() {
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-6 leading-tight text-balance animate-slide-up drop-shadow-2xl" style={{ animationDelay: '0.1s' }}>
             <span className="bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent animate-gradient">
-              Predaj a výkup paliet
+              Najväčší dodávateľ paliet na Slovensku
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-100 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            Dlhoročné skúsenosti s obalovým materiálom | Bezkonkurenčné ceny | Profesionálny prístup
+          
+          {/* Value Proposition - Benefits */}
+          <div className="flex flex-wrap gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-white font-semibold">Dodanie do 24h</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-white font-semibold">Certifikovaná kvalita</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <svg className="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-white font-semibold">Dlhodobé prenájmy</span>
+            </div>
+          </div>
+
+          <p className="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl animate-slide-up leading-relaxed" style={{ animationDelay: '0.3s' }}>
+            Až o <span className="text-orange font-bold text-2xl">20% výhodnejšie ceny</span> než konkurencia. 
+            <span className="block mt-2">Dlhoročné skúsenosti, bezkonkurenčné ceny a profesionálny prístup k každému zákazníkovi.</span>
           </p>
-          <p className="text-lg text-gray-200 mb-4 max-w-2xl animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            Zaoberáme sa výkupom, predajom, opravou paliet, KTP boxov, Gitterboxov a recykláciou dreveného odpadu.
-          </p>
-          <p className="text-lg text-gray-200 mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: '0.35s' }}>
-            Naše skladové zásoby stačia aj na tie najväčšie projekty. Plynulé dodanie tovaru, technické a skladové zabezpečenie. Neváhajte nás kontaktovať s Vašim dopytom.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Link href="/quote" className="btn-primary text-center group relative overflow-hidden text-lg px-8 py-4 shadow-2xl shadow-orange/50 hover:shadow-orange/70">
               <span className="relative z-10 flex items-center justify-center gap-2 font-bold">
                 <span>Získať cenovú ponuku</span>
@@ -59,14 +79,14 @@ export function HeroSection() {
               </span>
               <span className="absolute inset-0 bg-gradient-to-r from-orange-dark via-orange to-orange-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
             </Link>
-            <Link href="/services" className="btn-secondary text-center border-2 border-white/80 text-white hover:bg-white hover:text-forest backdrop-blur-md bg-white/20 group text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <a href="tel:+421905896685" className="btn-secondary text-center border-2 border-white/80 text-white hover:bg-white hover:text-forest backdrop-blur-md bg-white/20 group text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300">
               <span className="flex items-center justify-center gap-2 font-bold">
-                <span>Naše služby</span>
-                <svg className="w-6 h-6 transform group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
+                <span>Zavolať +421 905 896 685</span>
               </span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
