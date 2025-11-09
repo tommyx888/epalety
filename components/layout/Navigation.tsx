@@ -19,17 +19,17 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="bg-white shadow-soft sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-md shadow-soft sticky top-0 z-50 border-b border-gray-100">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center space-x-2 hover:opacity-90 transition-all duration-300 group">
             <Image
               src="/logo.jpg"
               alt="EPALETY.SK Logo"
               width={180}
               height={60}
-              className="h-16 md:h-20 w-auto object-contain mix-blend-multiply"
+              className="h-16 md:h-20 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </Link>
@@ -40,9 +40,10 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-900 font-medium hover:text-orange transition-colors duration-200"
+                className="text-gray-900 font-medium hover:text-orange transition-all duration-300 relative group"
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-orange to-orange-dark group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </div>
@@ -52,10 +53,10 @@ export function Navigation() {
             {/* Cart */}
             <Link
               href="/cart"
-              className="relative p-2 hover:text-orange transition-colors"
+              className="relative p-2 hover:text-orange transition-all duration-300 group"
             >
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -68,7 +69,7 @@ export function Navigation() {
                 />
               </svg>
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange to-orange-dark text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg animate-pulse">
                   {itemCount}
                 </span>
               )}

@@ -20,8 +20,13 @@
     @apply border-gray-200;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-white text-gray-900 font-body antialiased;
+    @apply selection:bg-orange/20 selection:text-forest;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -30,35 +35,45 @@
   
   h1 {
     @apply text-[32px] leading-[40px] md:text-[40px] md:leading-[48px] lg:text-[48px] lg:leading-[56px] font-bold;
+    @apply tracking-tight;
+    letter-spacing: -0.02em;
   }
   
   h2 {
     @apply text-[28px] leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[36px] lg:leading-[44px] font-semibold;
+    @apply tracking-tight;
+    letter-spacing: -0.01em;
   }
   
   h3 {
     @apply text-[24px] leading-[32px] md:text-[28px] md:leading-[36px] lg:text-[30px] lg:leading-[38px] font-semibold;
+    @apply tracking-tight;
   }
   
   h4 {
     @apply text-[24px] leading-[32px] font-semibold;
+    @apply tracking-tight;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-orange text-white font-semibold px-6 py-3 rounded-lg;
-    @apply hover:bg-orange-dark transform hover:-translate-y-0.5 hover:scale-105;
+    @apply bg-gradient-to-r from-orange to-orange-dark text-white font-semibold px-6 py-3 rounded-lg;
+    @apply hover:from-orange-dark hover:to-orange transform hover:-translate-y-0.5 hover:scale-105;
     @apply transition-all duration-smooth ease-out;
     @apply shadow-soft hover:shadow-card;
     @apply active:scale-95;
+    @apply relative overflow-hidden;
+    @apply hover:shadow-lg hover:shadow-orange/30;
   }
   
   .btn-secondary {
     @apply bg-transparent border-2 border-forest text-forest font-semibold px-6 py-3 rounded-lg;
-    @apply hover:bg-forest hover:text-white hover:scale-105;
+    @apply hover:bg-gradient-to-r hover:from-forest hover:to-forest-dark hover:text-white hover:scale-105;
     @apply transition-all duration-smooth ease-out;
     @apply active:scale-95;
+    @apply relative overflow-hidden;
+    @apply hover:shadow-lg hover:shadow-forest/20;
   }
   
   .btn-tertiary {
@@ -86,6 +101,18 @@
     @apply hover:shadow-card-hover hover:-translate-y-2 hover:scale-[1.02];
     @apply transition-all duration-smooth ease-out;
     @apply border border-gray-100;
+    @apply relative overflow-hidden;
+  }
+  
+  .card-modern::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-forest/0 via-orange/0 to-wood/0;
+    @apply opacity-0 transition-opacity duration-500;
+    @apply pointer-events-none;
+  }
+  
+  .card-modern:hover::before {
+    @apply opacity-5;
   }
   
   .input-field {
@@ -131,6 +158,15 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+  
+  .glass-effect-dark {
+    background: rgba(45, 80, 22, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(45, 80, 22, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(45, 80, 22, 0.1);
   }
   
   .hover-lift {
@@ -180,5 +216,52 @@
   100% {
     background-position: 60px 60px;
   }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
 }
 

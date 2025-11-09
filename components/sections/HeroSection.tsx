@@ -49,11 +49,21 @@ export function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Link href="/quote" className="btn-primary text-center group relative overflow-hidden">
-              <span className="relative z-10">Získať cenovú ponuku</span>
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <span>Získať cenovú ponuku</span>
+                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
               <span className="absolute inset-0 bg-gradient-to-r from-orange-dark to-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </Link>
-            <Link href="/services" className="btn-secondary text-center border-white text-white hover:bg-white hover:text-forest backdrop-blur-sm bg-white/10">
-              Naše služby
+            <Link href="/services" className="btn-secondary text-center border-white text-white hover:bg-white hover:text-forest backdrop-blur-sm bg-white/10 group">
+              <span className="flex items-center justify-center gap-2">
+                <span>Naše služby</span>
+                <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
             </Link>
           </div>
         </div>

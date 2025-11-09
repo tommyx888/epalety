@@ -36,12 +36,20 @@ export function FeaturesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="text-center">
-              <div className="text-5xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-heading font-semibold mb-3">
+            <div 
+              key={index} 
+              className="text-center group animate-fade-in hover:scale-105 transition-all duration-300"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 inline-block">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-heading font-semibold mb-3 group-hover:text-orange transition-colors duration-300">
                 {feature.title}
               </h3>
-              <p className="text-gray-200 text-sm">{feature.description}</p>
+              <p className="text-gray-200 text-sm group-hover:text-white transition-colors duration-300">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

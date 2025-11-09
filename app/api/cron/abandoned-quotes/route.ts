@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase/client'
 
-export const dynamic = 'force-dynamic'
-
 export async function GET() {
   // Find quotes older than 24h with no response
   const { data: abandonedQuotes } = await supabaseAdmin

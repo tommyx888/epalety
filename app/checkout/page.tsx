@@ -73,9 +73,7 @@ export default function CheckoutPage() {
         router.push(`/checkout/stripe?client_secret=${paymentData.clientSecret}`)
       } else if (formData.payment_method === 'cardpay') {
         // Redirect to CardPay
-        if (typeof window !== 'undefined') {
-          window.location.href = paymentData.paymentUrl
-        }
+        window.location.href = paymentData.paymentUrl
       } else {
         // Bank transfer - show confirmation
         clearCart()

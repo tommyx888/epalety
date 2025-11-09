@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useState, Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
-export const dynamic = 'force-dynamic'
-
-function OrderConfirmationContent() {
+export default function OrderConfirmationPage() {
   const searchParams = useSearchParams()
   const orderNumber = searchParams.get('order')
   const [order, setOrder] = useState<any>(null)
@@ -190,23 +188,6 @@ function OrderConfirmationContent() {
         </div>
       </div>
     </section>
-  )
-}
-
-export default function OrderConfirmationPage() {
-  return (
-    <Suspense fallback={
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom max-w-2xl">
-          <div className="card text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange mx-auto"></div>
-            <p className="mt-4 text-gray-600">Načítavam...</p>
-          </div>
-        </div>
-      </section>
-    }>
-      <OrderConfirmationContent />
-    </Suspense>
   )
 }
 

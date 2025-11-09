@@ -1,28 +1,8 @@
 import { Redis } from '@upstash/redis'
 
-let redisInstance: Redis | null = null
-
-function getRedisClient(): Redis {
-  if (!redisInstance) {
-    const url = process.env.UPSTASH_REDIS_URL
-    const token = process.env.UPSTASH_REDIS_TOKEN
-    
-    if (!url || !token) {
-      throw new Error('UPSTASH_REDIS_URL and UPSTASH_REDIS_TOKEN must be set')
-    }
-    
-    redisInstance = new Redis({
-      url: url,
-      token: token,
-    })
-  }
-  return redisInstance
-}
-
-export const redis = new Proxy({} as Redis, {
-  get(target, prop) {
-    return getRedisClient()[prop as keyof Redis]
-  }
+export const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_URL!,
+  token: process.env.UPSTASH_REDIS_TOKEN!,
 })
 
 export async function getCached<T>(
