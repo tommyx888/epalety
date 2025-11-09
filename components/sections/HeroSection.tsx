@@ -19,7 +19,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/scraped/pallets-2215366_1280.jpg"
+          src="/gemini-2.5-flash-image_Modern_industrial_warehouse_interior_filled_with_organized_wooden_euro_pallets_s-1.jpg"
           alt="EPALETY.SK sklad s paletami"
           fill
           className="object-cover"
@@ -137,7 +137,7 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-br from-accent-100/50 to-secondary-100/50 blur-3xl"></div>
             <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden group">
               <Image
-                src="/images/scraped/pallets-2215366_1280.jpg"
+                src="/Lucid_Origin_Wooden_euro_pallets_arranged_artistically_in_natu_0.jpg"
                 alt="EUR Palety"
                 width={600}
                 height={600}
