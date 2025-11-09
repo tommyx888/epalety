@@ -26,12 +26,12 @@ export function HeroSection() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-primary-700/85 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary-500/10 via-transparent to-accent-500/10 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/92 to-primary-700/90 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary-500/5 via-transparent to-accent-500/5" />
       </div>
 
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10 z-10">
+      {/* Subtle Background Pattern - reduced opacity */}
+      <div className="absolute inset-0 opacity-[0.03] z-10">
         <div className="absolute inset-0 animate-[patternMove_20s_linear_infinite]" style={{
           backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
         }} />
@@ -49,9 +49,9 @@ export function HeroSection() {
               <span>#1 dodávateľ na Slovensku</span>
             </div>
             
-            {/* H1 with Gradient */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance animate-slide-up drop-shadow-2xl" style={{ animationDelay: '0.1s' }}>
-              <span className="bg-gradient-to-r from-gray-900 via-primary-600 to-gray-900 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
+            {/* H1 with High Contrast */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_0_2px_8px_rgba(0,0,0,0.9)]">
                 Najväčší dodávateľ paliet na Slovensku
               </span>
             </h1>
