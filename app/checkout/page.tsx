@@ -73,7 +73,9 @@ export default function CheckoutPage() {
         router.push(`/checkout/stripe?client_secret=${paymentData.clientSecret}`)
       } else if (formData.payment_method === 'cardpay') {
         // Redirect to CardPay
-        window.location.href = paymentData.paymentUrl
+        if (typeof window !== 'undefined' && paymentData.paymentUrl) {
+          window.location.href = paymentData.paymentUrl
+        }
       } else {
         // Bank transfer - show confirmation
         clearCart()
@@ -88,7 +90,9 @@ export default function CheckoutPage() {
   }
 
   if (items.length === 0) {
-    router.push('/cart')
+    if (typeof window !== 'undefined') {
+      router.push('/cart')
+    }
     return null
   }
 

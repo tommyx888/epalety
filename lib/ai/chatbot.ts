@@ -1,8 +1,20 @@
 import { OpenAI } from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Lazy initialization to avoid build-time errors
+let openaiInstance: OpenAI | null = null
+
+function getOpenAI(): OpenAI | null {
+  if (!openaiInstance && process.env.OPENAI_API_KEY) {
+    try {
+      openaiInstance = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      })
+    } catch {
+      return null
+    }
+  }
+  return openaiInstance
+}
 
 const SYSTEM_PROMPT = `
 Si AI asistent pre EPALETY.SK, firmu zaoberajúcu sa predajom paliet.
@@ -28,16 +40,27 @@ export interface Message {
 }
 
 export async function getChatbotResponse(messages: Message[]) {
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4-turbo-preview',
-    messages: [
-      { role: 'system', content: SYSTEM_PROMPT },
-      ...messages,
-    ],
-    temperature: 0.7,
-    max_tokens: 500,
-  })
+  const openai = getOpenAI()
   
-  return response.choices[0].message.content
+  if (!openai) {
+    return 'Ľutujeme, chatbot momentálne nie je dostupný. Kontaktujte nás prosím priamo.'
+  }
+  
+  try {
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4-turbo-preview',
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...messages,
+      ],
+      temperature: 0.7,
+      max_tokens: 500,
+    })
+    
+    return response.choices[0].message.content || 'Ľutujeme, nepodarilo sa vygenerovať odpoveď.'
+  } catch (error) {
+    console.error('OpenAI API error:', error)
+    return 'Ľutujeme, nastala chyba pri komunikácii s chatbotom. Kontaktujte nás prosím priamo.'
+  }
 }
 
