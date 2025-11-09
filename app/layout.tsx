@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { CartProvider } from '@/contexts/CartContext'
-import { Navigation } from '@/components/layout/Navigation'
+import { StickyHeader } from '@/components/layout/StickyHeader'
 import { Footer } from '@/components/layout/Footer'
 import { CartListener } from '@/components/CartListener'
 
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <CartProvider>
           <CartListener />
-          <Navigation />
+          <StickyHeader />
           <main className="min-h-screen">
             {children}
           </main>

@@ -107,6 +107,9 @@ export function StickyHeader() {
           <button
             className="md:hidden p-2"
             aria-label="Toggle menu"
+            onClick={() => {
+              // Mobile menu toggle logic here
+            }}
           >
             <svg
               className="w-6 h-6"
