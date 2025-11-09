@@ -58,22 +58,22 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-orange to-orange-dark text-white font-semibold px-6 py-3 rounded-lg;
-    @apply hover:from-orange-dark hover:to-orange transform hover:-translate-y-0.5 hover:scale-105;
-    @apply transition-all duration-smooth ease-out;
-    @apply shadow-soft hover:shadow-card;
+    @apply bg-gradient-to-r from-orange via-orange-dark to-orange text-white font-bold px-8 py-4 rounded-xl;
+    @apply hover:from-orange-dark hover:via-orange hover:to-orange-light transform hover:-translate-y-1 hover:scale-110;
+    @apply transition-all duration-300 ease-out;
+    @apply shadow-xl hover:shadow-2xl;
     @apply active:scale-95;
     @apply relative overflow-hidden;
-    @apply hover:shadow-lg hover:shadow-orange/30;
+    @apply hover:shadow-orange/50 border-2 border-orange/20;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-forest text-forest font-semibold px-6 py-3 rounded-lg;
-    @apply hover:bg-gradient-to-r hover:from-forest hover:to-forest-dark hover:text-white hover:scale-105;
-    @apply transition-all duration-smooth ease-out;
+    @apply bg-transparent border-2 border-forest text-forest font-bold px-8 py-4 rounded-xl;
+    @apply hover:bg-gradient-to-r hover:from-forest hover:via-forest-dark hover:to-forest hover:text-white hover:scale-110;
+    @apply transition-all duration-300 ease-out;
     @apply active:scale-95;
     @apply relative overflow-hidden;
-    @apply hover:shadow-lg hover:shadow-forest/20;
+    @apply hover:shadow-2xl hover:shadow-forest/30 hover:-translate-y-1;
   }
   
   .btn-tertiary {
@@ -97,22 +97,28 @@
   }
   
   .card-modern {
-    @apply bg-gradient-to-br from-white to-gray-50 rounded-card p-6 shadow-soft;
-    @apply hover:shadow-card-hover hover:-translate-y-2 hover:scale-[1.02];
-    @apply transition-all duration-smooth ease-out;
-    @apply border border-gray-100;
+    @apply bg-gradient-to-br from-white via-gray-50 to-white rounded-xl p-8 shadow-lg;
+    @apply hover:shadow-2xl hover:-translate-y-3 hover:scale-[1.03];
+    @apply transition-all duration-500 ease-out;
+    @apply border-2 border-gray-200 hover:border-orange/30;
     @apply relative overflow-hidden;
   }
   
   .card-modern::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-forest/0 via-orange/0 to-wood/0;
+    @apply absolute inset-0 bg-gradient-to-br from-forest/10 via-orange/10 to-wood/10;
     @apply opacity-0 transition-opacity duration-500;
     @apply pointer-events-none;
   }
   
   .card-modern:hover::before {
-    @apply opacity-5;
+    @apply opacity-100;
+  }
+  
+  .card-modern::after {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange via-orange-dark to-orange;
+    @apply transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left;
   }
   
   .input-field {

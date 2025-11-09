@@ -30,13 +30,15 @@ export function HeroSection() {
       <div className="container-custom relative z-20">
         <div className="max-w-3xl animate-fade-in">
           {/* Glassmorphism Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 glass-effect rounded-full text-sm font-medium backdrop-blur-md animate-slide-up">
-            <span className="w-2 h-2 bg-orange rounded-full animate-pulse"></span>
-            <span>15+ rokov skúseností</span>
+          <div className="inline-flex items-center gap-2 px-6 py-3 mb-6 glass-effect rounded-full text-sm font-bold backdrop-blur-md animate-slide-up shadow-lg border-2 border-white/30">
+            <span className="w-3 h-3 bg-orange rounded-full animate-pulse shadow-lg shadow-orange/50"></span>
+            <span className="text-white font-bold">15+ rokov skúseností</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-6 leading-tight text-balance animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Predaj a výkup paliet
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-6 leading-tight text-balance animate-slide-up drop-shadow-2xl" style={{ animationDelay: '0.1s' }}>
+            <span className="bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent animate-gradient">
+              Predaj a výkup paliet
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-100 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             Dlhoročné skúsenosti s obalovým materiálom | Bezkonkurenčné ceny | Profesionálny prístup
@@ -48,20 +50,20 @@ export function HeroSection() {
             Naše skladové zásoby stačia aj na tie najväčšie projekty. Plynulé dodanie tovaru, technické a skladové zabezpečenie. Neváhajte nás kontaktovať s Vašim dopytom.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Link href="/quote" className="btn-primary text-center group relative overflow-hidden">
-              <span className="relative z-10 flex items-center justify-center gap-2">
+            <Link href="/quote" className="btn-primary text-center group relative overflow-hidden text-lg px-8 py-4 shadow-2xl shadow-orange/50 hover:shadow-orange/70">
+              <span className="relative z-10 flex items-center justify-center gap-2 font-bold">
                 <span>Získať cenovú ponuku</span>
-                <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg className="w-6 h-6 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-orange-dark to-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-orange-dark via-orange to-orange-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
             </Link>
-            <Link href="/services" className="btn-secondary text-center border-white text-white hover:bg-white hover:text-forest backdrop-blur-sm bg-white/10 group">
-              <span className="flex items-center justify-center gap-2">
+            <Link href="/services" className="btn-secondary text-center border-2 border-white/80 text-white hover:bg-white hover:text-forest backdrop-blur-md bg-white/20 group text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <span className="flex items-center justify-center gap-2 font-bold">
                 <span>Naše služby</span>
-                <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg className="w-6 h-6 transform group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </span>
             </Link>
